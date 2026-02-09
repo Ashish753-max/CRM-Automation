@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 
 test("valid login", async function ({ page }) {
 
-    await page.goto("https://engineersarmy.com/")
+    await page.goto("https://pipeclose.com/")
 
     await page.getByPlaceholder("Email").type("ashishappnox1@gmail.com")
 
