@@ -10,6 +10,9 @@ test("valid login", async ({ page }) => {
       throw new Error(`Failed to navigate to website: ${error.message}`);
     }
 
+     // Click on login on Dashboard 
+    await page.getByText('Log in').click();
+
     // Login with validation
     try {
       const emailField = page.getByPlaceholder("Email");

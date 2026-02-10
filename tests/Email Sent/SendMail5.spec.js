@@ -10,6 +10,9 @@ test("valid login", async ({ page }) => {
       throw new Error(`Failed to navigate to website: ${error.message}`);
     }
 
+    await page.getByText('Log in').click();
+    await page.waitForTimeout(1000);
+
     // Login with validation
     try {
       const emailField = page.getByPlaceholder("Email");
@@ -159,6 +162,9 @@ test("valid login", async ({ page }) => {
       await page.screenshot({ path: 'screenshots/email-send-error.png' });
       throw new Error(`Failed to send email: ${error.message}`);
     }
+
+      await page.waitForTimeout(9000);
+
 
     // Take final screenshot
     await page.screenshot({ path: 'screenshots/SendMail5-end.png' });

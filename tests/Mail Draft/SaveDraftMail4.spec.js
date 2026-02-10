@@ -10,6 +10,9 @@ test("valid login", async ({ page }) => {
       throw new Error(`Failed to navigate to website: ${error.message}`);
     }
 
+     // Click on login on Dashboard 
+    await page.getByText('Log in').click();
+
     // Login with validation
     try {
       const emailField = page.getByPlaceholder("Email");
@@ -57,24 +60,13 @@ test("valid login", async ({ page }) => {
       throw new Error(`Failed to navigate to Mail: ${error.message}`);
     }
 
-    // Click compose email with validation and handle disconnected inbox
+    // Click compose email with validation
     try {
-      const connectGmail = page.getByText("Connect Gmail");
       const composeButton = page.locator("//button[normalize-space()='Compose Mail']");
-      if (await connectGmail.isVisible({ timeout: 3000 }).catch(() => false)) {
-        console.warn("Inbox not connected — skipping compose/draft flow");
-        await page.screenshot({ path: 'screenshots/inbox-not-connected.png' });
-        return;
-      }
       if (!await composeButton.isVisible({ timeout: 5000 })) {
         throw new Error("Compose Mail button not visible");
       }
       await composeButton.click();
-      // Wait for composer to render (subject field is a good indicator)
-      const subjectFieldReady = page.getByPlaceholder("What's this about?");
-      if (!await subjectFieldReady.isVisible({ timeout: 5000 }).catch(() => false)) {
-        await page.waitForTimeout(1000);
-      }
       await page.waitForTimeout(800);
     } catch (error) {
       throw new Error(`Failed to click Compose Mail: ${error.message}`);
@@ -87,16 +79,13 @@ test("valid login", async ({ page }) => {
  // select the email
   await page.getByText("Active").click();   */
 
-    // Enter recipient email with error handling (robust selector)
+    // Enter recipient email with error handling
     try {
-      let recipientInput = page.locator('input[type="text"]').nth(1);
-      if (!await recipientInput.isVisible({ timeout: 1000 }).catch(() => false)) {
-        recipientInput = page.locator('input[type="email"], input[type="text"]').first();
-      }
+      const recipientInput = page.locator('input[type="text"]').nth(1);
       if (!await recipientInput.isVisible({ timeout: 5000 })) {
         throw new Error("Recipient email input not found");
       }
-      await recipientInput.fill('devbisht.appnox@gmail.com');
+      await recipientInput.fill('kunal.appnox@gmail.com');
       await page.waitForTimeout(1000);
       
       // Validate email format
@@ -106,7 +95,7 @@ test("valid login", async ({ page }) => {
       }
       
       // Press Enter to add recipient
-      await recipientInput.press('Enter');
+      await page.keyboard.press('Enter');
       await page.waitForTimeout(500);
     } catch (error) {
       throw new Error(`Failed to enter recipient email: ${error.message}`);
@@ -135,10 +124,7 @@ test("valid login", async ({ page }) => {
       await page.keyboard.type(
         'CRM should allow users to enter a recipient email address in the email input field and add it successfully upon pressing Enter. The system must validate the email format and display appropriate feedback for invalid inputs.'
       );
-      await page.waitForTimeout(500);
-      // Move focus out of the rich-text editor so Save Draft/Send become actionable
-      await page.keyboard.press('Tab');
-      await page.waitForTimeout(300);
+      await page.waitForTimeout(1000);
     } catch (error) {
       throw new Error(`Failed to enter email body: ${error.message}`);
     }
@@ -148,10 +134,6 @@ test("valid login", async ({ page }) => {
       const saveDraftButton = page.getByText("Save Draft");
       if (!await saveDraftButton.isVisible({ timeout: 5000 })) {
         throw new Error("Save Draft button not visible");
-      }
-      // Attempt to click even if momentarily disabled
-      if (!await saveDraftButton.isEnabled().catch(() => true)) {
-        console.warn("Save Draft button appears disabled — attempting click anyway");
       }
       await saveDraftButton.click();
       
@@ -170,7 +152,7 @@ test("valid login", async ({ page }) => {
     }
 
     // Take final screenshot
-    await page.screenshot({ path: 'screenshots/SaveDraftMail-end.png' });
+    await page.screenshot({ path: 'screenshots/SaveDraftMail4-end.png' });
 
   } catch (error) {
     console.error("Test error:", error.message);
