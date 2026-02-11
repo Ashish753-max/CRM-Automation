@@ -162,7 +162,7 @@ test("valid login", async ({ page }) => {
       throw new Error(`Failed to send email: ${error.message}`);
     }
 
-      await page.waitForTimeout(9000);
+    //  await page.waitForTimeout(9000);
 
 
     // Take final screenshot
