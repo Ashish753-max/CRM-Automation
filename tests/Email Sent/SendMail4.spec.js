@@ -162,7 +162,7 @@ test("valid login", async ({ page }) => {
       await page.screenshot({ path: 'screenshots/email-send-error.png' });
       throw new Error(`Failed to send email: ${error.message}`);
     }
-     await page.waitForTimeout(9000);
+    // await page.waitForTimeout(9000);
 
     // Take final screenshot
     await page.screenshot({ path: 'screenshots/SendMail4-end.png' });
