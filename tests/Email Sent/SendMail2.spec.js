@@ -9,7 +9,6 @@ test("valid login", async ({ page }) => {
     } catch (error) {
       throw new Error(`Failed to navigate to website: ${error.message}`);
     }
-
     await page.getByText('Log in').click();
     await page.waitForTimeout(1000);
 
@@ -47,30 +46,34 @@ test("valid login", async ({ page }) => {
       await page.waitForTimeout(3000);
     }
 
-    // Navigate to Mail section with error handling
+    // Navigate to mail section 
     try {
-      const mailLink = page.getByRole('link', { name: 'Mail' });
-      if (!await mailLink.isVisible({ timeout: 5000 })) {
-        throw new Error("Mail link not visible");
-      }
-      await mailLink.click();
-      await page.waitForLoadState('domcontentloaded');
-      await page.waitForTimeout(1000);
-    } catch (error) {
-      throw new Error(`Failed to navigate to Mail: ${error.message}`);
-    }
+  const mailLink = page.locator('a[href="/mail"]').first();
+
+  await mailLink.waitFor({ state: 'visible', timeout: 10000 });
+
+  await Promise.all([
+    page.waitForURL('**/mail'),
+    mailLink.click()
+  ]);
+
+} catch (error) {
+  throw new Error(`Failed to navigate to Mail: ${error.message}`);
+}
+
+
 
     // Click compose email with validation
     try {
-      const composeButton = page.locator("//button[normalize-space()='Compose Mail']");
-      if (!await composeButton.isVisible({ timeout: 5000 })) {
-        throw new Error("Compose Mail button not visible");
-      }
-      await composeButton.click();
-      await page.waitForTimeout(800);
-    } catch (error) {
-      throw new Error(`Failed to click Compose Mail: ${error.message}`);
-    }
+  const composeButton = page.getByRole('button', { name: /Compose Mail/i });
+
+  await composeButton.waitFor({ state: 'visible', timeout: 10000 });
+  await composeButton.click();
+
+} catch (error) {
+  throw new Error(`Failed to click Compose Mail: ${error.message}`);
+}
+
 
 /* // click on select sender 
   await page.getByText("Select sender").click();
@@ -81,7 +84,7 @@ test("valid login", async ({ page }) => {
 
     // Enter recipient email with error handling
     try {
-      const recipientInput = page.locator('input[type="text"]').nth(1);
+      const recipientInput = page.getByPlaceholder("Add recipients...");
       if (!await recipientInput.isVisible({ timeout: 5000 })) {
         throw new Error("Recipient email input not found");
       }
@@ -154,7 +157,7 @@ test("valid login", async ({ page }) => {
       const successMsg = page.locator('text=Email sent|Success|Sent successfully');
       if (!await successMsg.isVisible({ timeout: 5000 }).catch(() => false)) {
         console.warn("Success message not found, but email may have been sent");
-        await page.screenshot({ path: 'screenshots/email-send-failure.png' });
+        await page.screenshot({ path: 'screenshots/email-send-failure2.png' });
       } else {
         await page.screenshot({ path: 'screenshots/email-sent.png' });
       }
@@ -163,7 +166,7 @@ test("valid login", async ({ page }) => {
       throw new Error(`Failed to send email: ${error.message}`);
     }
 
-  //  await page.waitForTimeout(9000);
+    //  await page.waitForTimeout(9000);
 
 
     // Take final screenshot
