@@ -170,7 +170,7 @@ test("valid login", async ({ page }) => {
 
 
     // Take final screenshot
-    await page.screenshot({ path: 'screenshots/SendMail-end.png' });
+    await page.screenshot({ path: 'screenshots/SendMail1-end.png' });
 
   } catch (error) {
     console.error("Test error:", error.message);
