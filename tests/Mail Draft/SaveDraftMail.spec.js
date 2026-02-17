@@ -92,14 +92,11 @@ test("valid login", async ({ page }) => {
 
     // Enter recipient email with error handling (robust selector)
     try {
-      let recipientInput = page.locator('input[type="text"]').nth(1);
-      if (!await recipientInput.isVisible({ timeout: 1000 }).catch(() => false)) {
-        recipientInput = page.locator('input[type="email"], input[type="text"]').first();
-      }
+      const recipientInput = page.getByPlaceholder("Add recipients...");
       if (!await recipientInput.isVisible({ timeout: 5000 })) {
         throw new Error("Recipient email input not found");
       }
-      await recipientInput.fill('devbisht.appnox@gmail.com');
+      await recipientInput.fill('kunal.sharma@appnox.ai');
       await page.waitForTimeout(1000);
       
       // Validate email format
@@ -109,7 +106,7 @@ test("valid login", async ({ page }) => {
       }
       
       // Press Enter to add recipient
-      await recipientInput.press('Enter');
+      await page.keyboard.press('Enter');
       await page.waitForTimeout(500);
     } catch (error) {
       throw new Error(`Failed to enter recipient email: ${error.message}`);
