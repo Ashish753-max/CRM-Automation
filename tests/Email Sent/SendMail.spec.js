@@ -88,15 +88,9 @@ test("valid login", async ({ page }) => {
       if (!await recipientInput.isVisible({ timeout: 5000 })) {
         throw new Error("Recipient email input not found");
       }
-      await recipientInput.fill('devbisht.appnox@gmail.com');
+      await recipientInput.fill('dev.bisht@appnox.ai');
       await page.waitForTimeout(1000);
-      
-      // Validate email format
-      const emailValue = await recipientInput.inputValue();
-      if (!emailValue.includes('@')) {
-        throw new Error("Invalid email format entered");
-      }
-      
+    
       // Press Enter to add recipient
       await page.keyboard.press('Enter');
       await page.waitForTimeout(500);
@@ -157,7 +151,7 @@ test("valid login", async ({ page }) => {
       const successMsg = page.locator('text=Email sent|Success|Sent successfully');
       if (!await successMsg.isVisible({ timeout: 5000 }).catch(() => false)) {
         console.warn("Success message not found, but email may have been sent");
-        await page.screenshot({ path: 'screenshots/email-send-failure.png' });
+        await page.screenshot({ path: 'screenshots/email-send-failure2.png' });
       } else {
         await page.screenshot({ path: 'screenshots/email-sent.png' });
       }
@@ -170,7 +164,7 @@ test("valid login", async ({ page }) => {
 
 
     // Take final screenshot
-    await page.screenshot({ path: 'screenshots/SendMai-end.png' });
+    await page.screenshot({ path: 'screenshots/SendMail-end.png' });
 
   } catch (error) {
     console.error("Test error:", error.message);

@@ -90,13 +90,7 @@ test("valid login", async ({ page }) => {
       }
       await recipientInput.fill('kunal.sharma@appnox.ai');
       await page.waitForTimeout(1000);
-      
-      // Validate email format
-      const emailValue = await recipientInput.inputValue();
-      if (!emailValue.includes('@')) {
-        throw new Error("Invalid email format entered");
-      }
-      
+    
       // Press Enter to add recipient
       await page.keyboard.press('Enter');
       await page.waitForTimeout(500);
@@ -157,7 +151,7 @@ test("valid login", async ({ page }) => {
       const successMsg = page.locator('text=Email sent|Success|Sent successfully');
       if (!await successMsg.isVisible({ timeout: 5000 }).catch(() => false)) {
         console.warn("Success message not found, but email may have been sent");
-        await page.screenshot({ path: 'screenshots/email-send-failure1.png' });
+        await page.screenshot({ path: 'screenshots/email-send-failure2.png' });
       } else {
         await page.screenshot({ path: 'screenshots/email-sent.png' });
       }

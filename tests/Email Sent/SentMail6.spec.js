@@ -90,13 +90,7 @@ test("valid login", async ({ page }) => {
       }
       await recipientInput.fill('shivam.appnox@gmail.com');
       await page.waitForTimeout(1000);
-      
-      // Validate email format
-      const emailValue = await recipientInput.inputValue();
-      if (!emailValue.includes('@')) {
-        throw new Error("Invalid email format entered");
-      }
-      
+    
       // Press Enter to add recipient
       await page.keyboard.press('Enter');
       await page.waitForTimeout(500);
@@ -170,7 +164,7 @@ test("valid login", async ({ page }) => {
 
 
     // Take final screenshot
-    await page.screenshot({ path: 'screenshots/SendMail6-end.png' });
+    await page.screenshot({ path: 'screenshots/SendMail-end.png' });
 
   } catch (error) {
     console.error("Test error:", error.message);

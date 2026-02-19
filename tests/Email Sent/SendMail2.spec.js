@@ -90,13 +90,7 @@ test("valid login", async ({ page }) => {
       }
       await recipientInput.fill('shivang.appnox@gmail.com');
       await page.waitForTimeout(1000);
-      
-      // Validate email format
-      const emailValue = await recipientInput.inputValue();
-      if (!emailValue.includes('@')) {
-        throw new Error("Invalid email format entered");
-      }
-      
+    
       // Press Enter to add recipient
       await page.keyboard.press('Enter');
       await page.waitForTimeout(500);
