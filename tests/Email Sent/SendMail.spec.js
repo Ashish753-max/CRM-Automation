@@ -48,12 +48,12 @@ test("valid login", async ({ page }) => {
 
     // Navigate to mail section 
     try {
-  const mailLink = page.locator('a[href="/mail"]').first();
+  const mailLink = page.locator('a[href="/Inbox"]').first();
 
   await mailLink.waitFor({ state: 'visible', timeout: 10000 });
 
   await Promise.all([
-    page.waitForURL('**/mail'),
+    page.waitForURL('**/Inbox'),
     mailLink.click()
   ]);
 
