@@ -69,7 +69,7 @@ test("valid login", async function ({ page }) {
     await plusLeadButton.click();
 
     // Enter  the contact person name
-await page.getByPlaceholder('name').first().fill('Ashish');
+await page.getByPlaceholder('name').first().fill('Dev Bisht');
 
 // Enter the organization name 
 const orgField = page.getByPlaceholder('name').nth(1);
@@ -78,14 +78,32 @@ await orgField.type('Pipeclose');
 await page.waitForTimeout(1000);
 
 // Enter the value
-// Enter  the contact person name
 await page.getByPlaceholder('0').first().fill('3000');
+await page.waitForTimeout(1500);
 
 // Enter the requirements
+await page.getByPlaceholder("Details about the lead's needs...").fill('Software Development Services');
+await page.waitForTimeout(1500);
 
-    // Optionally, wait and take a screenshot at the end
-    // await page.waitForTimeout(5000);
-    // await page.screenshot({ path: 'screenshots/CRM Login-end.png' });
+// Enter the phone number
+await page.getByPlaceholder('Phone number').fill('9983483883');
+await page.waitForTimeout(1500);
+
+// Enter the email
+await page.getByPlaceholder('Email').fill('dev.bisht@appnox.ai');
+await page.waitForTimeout(1500);
+
+// Click on save button
+await page.getByRole('button', { name: 'Save' }).click();
+
+// Wait for the page to complete the save action
+await page.waitForTimeout(3000);
+
+// Take screenshot to see the result after lead creation
+await page.screenshot({ path: 'screenshots/Lead1-Created-Successfully.png' });
+console.log('✓ Screenshot saved: screenshots/Lead1-Created-Successfully.png');
+
+
 
 });
 
