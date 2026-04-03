@@ -91,7 +91,7 @@ await page.getByPlaceholder('Phone number').fill('7089829839');
 await page.waitForTimeout(1500);
 
 // Enter the email
-await page.getByPlaceholder('Email').fill('kunal.sharma@appnox.com');
+await page.getByPlaceholder('Email address').fill('kunal.sharma@appnox.com');
 await page.waitForTimeout(1000);
 
 // Click on save button
