@@ -16,6 +16,8 @@ This project is an End-to-End (E2E) Automation Testing Framework developed for t
 ---
 
 ## 📂 Project Structure
+
+```
 CRM/
 │
 ├── .github/              # GitHub workflows & CI/CD configs
@@ -43,6 +45,7 @@ CRM/
 │
 ├── Playwright-docs.md    # Notes & documentation
 └── package.json          # Project dependencies & scripts
+```
 
 The report contains:
 - Test execution summary
