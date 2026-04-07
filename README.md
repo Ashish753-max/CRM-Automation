@@ -149,7 +149,7 @@ This framework supports CI/CD integration for automated test execution during co
 ---
 
 ## 👨‍💻 Author
-Ashish Rai
+Ashish Rai ||
 QA Engineer  
 
 
