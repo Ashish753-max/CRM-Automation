@@ -42,7 +42,7 @@ CRM/
 │   ├── SignOut/          # Logout tests
 │
 ├── Playwright-docs.md    # Notes & documentation
-└── package.json         # Project dependencies & scripts
+└── package.json          # Project dependencies & scripts
 
 The report contains:
 - Test execution summary
