@@ -16,32 +16,36 @@ This project is an End-to-End (E2E) Automation Testing Framework developed for t
 ---
 
 ## 📂 Project Structure
-CRM
+
+```
+CRM/
 │
-├── .github/
-├── .vscode/
-├── e2e/
-├── node_modules/
-├── playwright-report/
-├── screenshots/
-├── test-results/
-├── tests/
-│ ├── AI Agent/
-│ ├── Deal/
-│ ├── Email Sent/
-│ ├── Import/
-│ ├── Login/
-│ ├── Mail Draft/
-│ ├── Practice/
-│ ├── Profile/
-│ └── SignOut/
+├── .github/              # GitHub workflows & CI/CD configs
+├── .vscode/              # VS Code settings
+├── e2e/                  # End-to-End test configurations
+├── node_modules/         # Project dependencies
+├── playwright/           # Playwright configs & setup
+├── screenshots/          # Captured screenshots for failed tests
+├── test-results/         # Test execution reports
 │
-├── videos/
-├── playwright-docs.md
-├── login-trace.zip
-├── .gitignore
-├── package.json
-└── package-lock.json
+├── tests/                # Main test suite
+│   ├── AI Agent/         # AI-related test cases
+│   ├── Basic Script/     # Basic automation scripts
+│   ├── common/           # Reusable utilities & helpers
+│   ├── Dashboard/        # Dashboard module tests
+│   ├── Deal/             # Deal-related test cases
+│   ├── Email Sent/       # Email sent flow tests
+│   ├── Import/           # Data import tests
+│   ├── Lead/             # Lead management tests
+│   ├── Login/            # Authentication tests
+│   ├── Mail Draft/       # Draft email tests
+│   ├── Practice/         # Experimental scripts
+│   ├── Profile/          # Profile management tests
+│   ├── SignOut/          # Logout tests
+│
+├── Playwright-docs.md    # Notes & documentation
+└── package.json          # Project dependencies & scripts
+```
 
 The report contains:
 - Test execution summary
@@ -145,7 +149,7 @@ This framework supports CI/CD integration for automated test execution during co
 ---
 
 ## 👨‍💻 Author
-Ashish Rai
+Ashish Rai ||
 QA Engineer  
 
 
