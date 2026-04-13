@@ -37,6 +37,8 @@ test("valid login", async function ({ page }) {
     } catch (error) {
       throw new Error(`Login failed: ${error.message}`);
     }
+        await page.waitForTimeout(2000);
+
 
     // Navigate to Lead section
     try {
@@ -46,7 +48,7 @@ test("valid login", async function ({ page }) {
       const currentUrl = page.url();
       console.log('Current URL after login:', currentUrl);
       if (!/\/leads/i.test(currentUrl)) {
-        const leadLink = page.locator('a[href="/Leads"]').first();
+        const leadLink = page.locator('a[href="/leads"]').first();
         await leadLink.waitFor({ state: 'visible', timeout: 10000 });
         await Promise.all([
           page.waitForURL(/\/leads/i),

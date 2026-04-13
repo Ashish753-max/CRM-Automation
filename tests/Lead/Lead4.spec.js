@@ -18,7 +18,7 @@ test("valid login", async function ({ page }) {
       if (!await emailField.isVisible({ timeout: 5000 })) {
         throw new Error("Email field not visible on login page");
       }
-      await emailField.fill("ashishappnox1@gmail.com");
+      await emailField.fill("ashishappnox14@gmail.com");
       await page.waitForTimeout(500);
 
       const passwordField = page.getByPlaceholder("Password");
@@ -46,7 +46,7 @@ test("valid login", async function ({ page }) {
       const currentUrl = page.url();
       console.log('Current URL after login:', currentUrl);
       if (!/\/leads/i.test(currentUrl)) {
-        const leadLink = page.locator('a[href="/Leads"]').first();
+        const leadLink = page.locator('a[href="/leads"]').first();
         await leadLink.waitFor({ state: 'visible', timeout: 10000 });
         await Promise.all([
           page.waitForURL(/\/leads/i),
