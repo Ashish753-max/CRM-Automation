@@ -60,6 +60,7 @@ await page.waitForTimeout(300);
 // Click on save button
 await page.getByRole('button', { name: 'Save' }).click();
 
-// Enter the reqirement 
+// Take final screenshot
+    await page.screenshot({ path: 'screenshots/CreateDeal2-end.png' });
 
 })

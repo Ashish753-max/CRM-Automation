@@ -136,7 +136,7 @@ test("valid login", async ({ page }) => {
     await page.screenshot({ path: 'screenshots/SaveDraftMail2-end.png' });
 
   } catch (error) {
-    console.error("Test error:", error.message);
+    console.error("Test error:", error.message); 
     throw error;
   }
 
