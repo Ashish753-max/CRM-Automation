@@ -134,7 +134,7 @@ test("valid login", async ({ page }) => {
       const sendButton = page.getByRole('button', { name: 'Send' });
       if (!await sendButton.isVisible({ timeout: 5000 })) {
         throw new Error("Send button not visible");
-      }
+      }   
       await sendButton.scrollIntoViewIfNeeded();
       if (!await sendButton.isEnabled()) {
         throw new Error("Send button is disabled (check required fields)");

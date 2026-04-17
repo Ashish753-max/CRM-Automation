@@ -12,7 +12,7 @@ test("valid login", async ({ page }) => {
     await page.getByText('Log in').click();
     await page.waitForTimeout(1000);
 
-    // Login with validation
+    // Login with validation  
     try {
       const emailField = page.getByPlaceholder("Email");
       if (!await emailField.isVisible({ timeout: 5000 })) {
