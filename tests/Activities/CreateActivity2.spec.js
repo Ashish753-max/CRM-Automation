@@ -46,12 +46,24 @@ test("valid login", async ({ page }) => {
       await page.waitForTimeout(3000);
     }
 
+    await page.waitForTimeout(1000);
+
     // Navigate to Activity section 
     const activity = page.locator('a[href="/activities"]').first();
     await activity.click();
 
   } catch (error) {
     console.error(error.message);
+  }
+  await page.waitForTimeout(1000);
+
+  // Click on the add activty button
+  try {
+    const addActivityButton = page.locator('button:has-text("Add Activity")');
+    await addActivityButton.waitFor({ state: 'visible', timeout: 10000 });
+    await addActivityButton.click();
+  } catch (error) {
+    console.error(`Failed to click Add Activity button: ${error.message}`);
   }
 
   
