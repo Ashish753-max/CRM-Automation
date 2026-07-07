@@ -1,4 +1,4 @@
-# 🚀 CRM Automation Testing Framework
+# 🚀 CRM Automation Framework
 
 ## 📌 Project Overview
 This project is an End-to-End (E2E) Automation Testing Framework developed for the CRM (Customer Relationship Management) application using JavaScript and Playwright. The framework automates major CRM workflows to ensure functionality, reliability, and performance. It includes test coverage for modules such as Login, Deal Management, Email Draft, Import, Profile Management, AI Agent features, and Sign Out functionality.
