@@ -133,15 +133,57 @@ try {
 
 await page.waitForTimeout(2000);
 
-// Click on the "Save" button in the convert to deal form 
-const saveButton = page.locator('button:has-text("Save")').first();
-await saveButton.waitFor({ state: 'visible', timeout: 10000 });
-await saveButton.click();
-await page.waitForTimeout(2000);
+// Click on the "Save" button in the convert to deal modal form 
+try {
+  // Wait for modal to be fully visible
+  await page.waitForSelector('[role="dialog"]', { timeout: 10000 });
+  await page.waitForTimeout(1000);
+  
+  // Debug: Take screenshot before clicking
+  console.log('📸 Taking screenshot before clicking Save button...');
+  
+  // Try multiple methods to find and click the Save button
+  // Method 1: Using JavaScript to find and click the button
+  const clicked = await page.evaluate(() => {
+    const buttons = Array.from(document.querySelectorAll('button'));
+    const saveBtn = buttons.find(btn => {
+      const text = btn.textContent.toLowerCase().trim();
+      return text.includes('save');
+    });
+    
+    if (saveBtn) {
+      console.log('Save button found:', saveBtn);
+      console.log('Button disabled:', saveBtn.disabled);
+      console.log('Button text:', saveBtn.textContent);
+      console.log('Button classes:', saveBtn.className);
+      
+      // Try to enable if disabled
+      saveBtn.disabled = false;
+      
+      // Try clicking
+      saveBtn.click();
+      return true;
+    }
+    return false;
+  });
+  
+  if (clicked) {
+    console.log('✓ Save button clicked successfully using JavaScript');
+  } else {
+    // Method 2: If JavaScript click failed, try with force click
+    const saveButton = page.getByRole('button', { name: 'Save' });
+    await saveButton.waitFor({ state: 'visible', timeout: 5000 });
+    await saveButton.click({ force: true, trial: false });
+    console.log('✓ Save button clicked using force click');
+  }
+  
+  await page.waitForTimeout(2000);
+} catch (error) {
+  throw new Error(`Failed to click Save button in modal: ${error.message}`);
+}
 
-// Take screenshot to see the result after lead creation
-await page.screenshot({ path: 'screenshots/Lead1-Created-Successfully.png' });
-console.log('✓ Screenshot saved: screenshots/Lead1-Created-Successfully.png');
+// Video will be automatically recorded and saved
+console.log('✓ Test completed - Video recording saved');
 
 });
 

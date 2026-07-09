@@ -34,15 +34,24 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     
-    /* Enable video recording */
-    video: 'retain-on-failure',
+    /* Enable video recording for all tests */
+    video: 'on',
+    
+    /* Set video size for better visibility */
+    videoSize: { width: 1280, height: 720 },
+    
+    /* Set output directory for videos with test name */
+    videoDir: 'videos',
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+        ...devices['Desktop Chrome'],
+      },
+      outputDir: 'test-results/chromium',
     },
   /*  {
       name: 'firefox',
