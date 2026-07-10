@@ -1,5 +1,15 @@
 # 🚀 CRM Automation Framework
 
+<p align="center">
+
+![Java](https://img.shields.io/badge/Java-17-orange?style=for-the-badge&logo=java)
+![Selenium](https://img.shields.io/badge/Selenium-Automation-green?style=for-the-badge&logo=selenium)
+![Maven](https://img.shields.io/badge/Maven-Build-red?style=for-the-badge&logo=apachemaven)
+![Jenkins](https://img.shields.io/badge/Jenkins-CI/CD-blue?style=for-the-badge&logo=jenkins)
+![GitHub](https://img.shields.io/badge/GitHub-Version_Control-black?style=for-the-badge&logo=github)
+
+</p>
+
 ## 📌 Project Overview
 This project is an End-to-End (E2E) Automation Testing Framework developed for the CRM (Customer Relationship Management) application using JavaScript and Playwright. The framework automates major CRM workflows to ensure functionality, reliability, and performance. It includes test coverage for modules such as Login, Deal Management, Email Draft, Import, Profile Management, AI Agent features, and Sign Out functionality.
 
