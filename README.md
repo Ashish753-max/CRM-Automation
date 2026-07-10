@@ -1,12 +1,14 @@
-# 🚀 CRM Automation Framework
+# 🚀 Pipeclose Automation Framework
 
 <p align="center">
 
-![Java](https://img.shields.io/badge/Java-17-orange?style=for-the-badge&logo=java)
-![Selenium](https://img.shields.io/badge/Selenium-Automation-green?style=for-the-badge&logo=selenium)
-![Maven](https://img.shields.io/badge/Maven-Build-red?style=for-the-badge&logo=apachemaven)
-![Jenkins](https://img.shields.io/badge/Jenkins-CI/CD-blue?style=for-the-badge&logo=jenkins)
-![GitHub](https://img.shields.io/badge/GitHub-Version_Control-black?style=for-the-badge&logo=github)
+<img src="https://img.shields.io/badge/JavaScript-ES6+-yellow?style=for-the-badge&logo=javascript" />
+<img src="https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript" />
+<img src="https://img.shields.io/badge/Playwright-Automation-green?style=for-the-badge&logo=playwright" />
+<img src="https://img.shields.io/badge/GitHub-Version_Control-black?style=for-the-badge&logo=github" />
+<img src="https://img.shields.io/badge/Jenkins-CI%2FCD-red?style=for-the-badge&logo=jenkins" />
+<img src="https://img.shields.io/badge/Claude-AI-purple?style=for-the-badge" />
+<img src="https://img.shields.io/badge/ChatGPT-AI-10A37F?style=for-the-badge&logo=openai" />
 
 </p>
 
