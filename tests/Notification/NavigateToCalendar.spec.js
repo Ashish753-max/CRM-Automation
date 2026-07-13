@@ -45,13 +45,20 @@ test("valid login", async ({ page }) => {
       console.warn(`Dashboard networkidle wait exceeded, continuing anyway: ${error.message}`);
       await page.waitForTimeout(3000);
     }
+  } catch (error) {
+    throw new Error(`Test failed: ${error.message}`);
+  }
 
-    // Click on the notification button
+  // Click on the notification button
     const notificationButton = page.getByRole('button', { name: 'Notifications' });
     await notificationButton.waitFor({ state: 'visible', timeout: 10000 });
     await notificationButton.click();
     await page.waitForTimeout(1000);
-  } catch (error) {
-    throw new Error(`Test failed: ${error.message}`);
-  }
+
+    // click on the Calendar button
+    const clearAllButton = page.getByRole('button', { name: 'Go to Calendar' });
+    await clearAllButton.waitFor({ state: 'visible', timeout: 10000 });
+    await clearAllButton.click();
+    await page.waitForTimeout(1000); 
+
 });

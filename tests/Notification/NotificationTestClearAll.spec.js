@@ -48,4 +48,16 @@ test("valid login", async ({ page }) => {
   } catch (error) {
     throw new Error(`Test failed: ${error.message}`);
   }
+
+  // Click on the notification button
+    const notificationButton = page.getByRole('button', { name: 'Notifications' });
+    await notificationButton.waitFor({ state: 'visible', timeout: 10000 });
+    await notificationButton.click();
+    await page.waitForTimeout(1000);
+
+    // click on the "Clear All" button
+    const clearAllButton = page.getByRole('button', { name: 'Clear all' });
+    await clearAllButton.waitFor({ state: 'visible', timeout: 10000 });
+    await clearAllButton.click();
+    await page.waitForTimeout(1000);
 });
