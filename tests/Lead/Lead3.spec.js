@@ -9,7 +9,7 @@ test("valid login", async function ({ page }) {
     } catch (error) {
       throw new Error(`Failed to navigate to website: ${error.message}`);
     }
-    await page.getByText('Log in').click();
+    await page.getByText('Sign in').click();
     await page.waitForTimeout(1000);
 
     // Login with validation
@@ -18,7 +18,7 @@ test("valid login", async function ({ page }) {
       if (!await emailField.isVisible({ timeout: 5000 })) {
         throw new Error("Email field not visible on login page");
       }
-      await emailField.fill("ashishappnox14@gmail.com");
+      await emailField.fill("ashishappnox1@gmail.com");
       await page.waitForTimeout(500);
 
       const passwordField = page.getByPlaceholder("Password");

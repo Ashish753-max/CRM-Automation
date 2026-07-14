@@ -4,12 +4,12 @@ test("Deal Creation",async function ({page, context}) {
     // Launch the page
     await page.goto("https://pipeclose.com/")
 
-        await page.getByText('Log in').click();
+        await page.getByText('Sign in').click();
         await page.waitForTimeout(1000);
 
 
     // Enter email address
-    await page.getByPlaceholder("Email").type ("ashishappnox14@gmail.com")
+    await page.getByPlaceholder("Email").type ("ashishappnox1@gmail.com")
 
     // Enter the Password
     await  page.getByPlaceholder("Password").type("Ashish@567")

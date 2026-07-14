@@ -22,12 +22,12 @@ test("Deal Creation",async function ({page, context}) {
 await page.locator("//button[normalize-space()='Deal']").click();
 
 // Enter  the contact person name
-await page.getByPlaceholder('name').first().fill('Ashish Rai');
+await page.getByPlaceholder('name').first().fill('Dev');
 
 // Enter the organization name 
 const orgField = page.getByPlaceholder('name').nth(1);
 await orgField.click();
-await orgField.type('Appnox Technologies Pvt. Ltd.');
+await orgField.type('Microsoft AI');
 await page.waitForTimeout(1000);
 // Navigate to dropdown option with arrow key and select with Enter
 await orgField.press('ArrowDown');
@@ -45,8 +45,8 @@ await phoneLabel.scrollIntoViewIfNeeded();
 const phoneInput = phoneLabel.locator('xpath=following::input[1]');
 await phoneInput.click();
 await phoneInput.clear();
-await phoneInput.fill('9878473848');
-await page.waitForTimeout(500);
+await phoneInput.fill('367347474721');
+await page.waitForTimeout(5000);
 
 // Enter the email 
 const emailLabel = page.locator('text="Email"').last();
@@ -54,14 +54,13 @@ await emailLabel.scrollIntoViewIfNeeded();
 const emailInput = emailLabel.locator('xpath=following::input[1]');
 await emailInput.click();
 await emailInput.clear();
-await emailInput.fill('ashishappnox1@gmail.com');
+await emailInput.fill('dev.appnox@gmail.com');
 await page.waitForTimeout(300);
 
 // Click on save button
 await page.getByRole('button', { name: 'Save' }).click();
 
 // Take final screenshot
-    await page.screenshot({ path: 'screenshots/CreateDeal1-end.png' });
-
+    await page.screenshot({ path: 'screenshots/CreateDeal3-end.png' });
 
 })
