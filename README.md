@@ -1,4 +1,16 @@
-# 🚀 CRM Automation Testing Framework
+# 🚀 Pipeclose Automation Framework
+
+<p align="center">
+
+<img src="https://img.shields.io/badge/JavaScript-ES6+-yellow?style=for-the-badge&logo=javascript" />
+<img src="https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript" />
+<img src="https://img.shields.io/badge/Playwright-Automation-green?style=for-the-badge&logo=playwright" />
+<img src="https://img.shields.io/badge/GitHub-Version_Control-black?style=for-the-badge&logo=github" />
+<img src="https://img.shields.io/badge/Jenkins-CI%2FCD-red?style=for-the-badge&logo=jenkins" />
+<img src="https://img.shields.io/badge/Claude-AI-purple?style=for-the-badge" />
+<img src="https://img.shields.io/badge/ChatGPT-AI-10A37F?style=for-the-badge&logo=openai" />
+
+</p>
 
 ## 📌 Project Overview
 This project is an End-to-End (E2E) Automation Testing Framework developed for the CRM (Customer Relationship Management) application using JavaScript and Playwright. The framework automates major CRM workflows to ensure functionality, reliability, and performance. It includes test coverage for modules such as Login, Deal Management, Email Draft, Import, Profile Management, AI Agent features, and Sign Out functionality.
