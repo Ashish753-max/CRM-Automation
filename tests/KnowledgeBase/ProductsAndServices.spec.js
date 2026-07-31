@@ -39,14 +39,23 @@ test("valid login", async function ({ page }) {
       throw new Error(`Login failed: ${error.message}`);
     }
 
-    // Wait for 5 seconds to ensure dashboard is loaded, then take final screenshot
-    await page.waitForTimeout(5000);
-    await page.screenshot({ path: 'screenshots/CRM Login-end.png' });
 
   } catch (error) {
     console.error("Test error:", error.message);
     throw error;
   }
+
+  // click on the AI knowledge base section 
+  await page.getByRole('link', { name: 'AI Knowledge Base' }).click();
+   await page.waitForTimeout(1000);
+  // click on the company profile section
+    await page.getByText('Company Profile').click();
+
+    //
+
+        
+
+        
 
 });
 
