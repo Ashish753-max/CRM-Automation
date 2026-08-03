@@ -49,9 +49,11 @@ test("valid login", async function ({ page }) {
   await page.getByRole('link', { name: 'AI Knowledge Base' }).click();
    await page.waitForTimeout(1000);
   // click on the company profile section
-    await page.getByText('Company Profile').click();
+    await page.getByText('Products & Services').click();
 
-    //
+    // click on the add product and services button
+    await page.getByRole('button', { name: ' Add Product / Service' }).click();
+    await page.waitForTimeout(1000);
 
         
 

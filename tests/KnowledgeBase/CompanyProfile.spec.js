@@ -75,6 +75,13 @@ test("valid login", async function ({ page }) {
         // press Enter key on keyboard
         await page.keyboard.press('Enter');
 
+        // click on the save changes button
+        await page.getByRole('button', { name: 'Save Changes' }).click();
+await page.waitForTimeout(2000);
+        // click on the confirm save change button
+       const saveButton = page.getByRole('button', { name: 'Save changes' });
+
+await saveButton.click();
         
 
 });

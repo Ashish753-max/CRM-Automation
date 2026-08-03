@@ -55,12 +55,30 @@ test("valid login", async function ({ page }) {
         await page.getByPlaceholder('Describe your ideal customer...').fill('An Ideal Customer Profile (ICP) is a detailed description of the type of company that is the best fit for a product or service. It helps sales and marketing teams focus on customers who are most likely to buy, succeed, and stay long-term.');
        await page.waitForTimeout(1000);
         // enter the discovery question 
-        await page.locator('textarea').fill(`What are your current challenges?
+        await page
+    .getByPlaceholder(/What are your current challenges/)
+    .fill(`What are your current challenges?
 What does your ideal solution look like?
 What is your timeline for making a decision?
 Who else is involved in the buying process?
 What would success look like for you in 6 months?`);
 
+// enter the key talking points
+await page
+  .getByPlaceholder(/We have helped 100\+ companies.../)
+  .fill(`We have helped 100+ companies...
+Our average ROI is 3x...
+We offer dedicated onboarding and support...
+Our solution integrates seamlessly with your existing tools...
+Trusted by industry leaders across 20+ countries...`);
+
+// click on the save changes button
+await page.getByRole('button', { name: 'Save Changes' }).click();
+
+// click on the confirm save change button
+const saveButton = page.getByRole('button', { name: 'Save changes' });
+
+await saveButton.click();
 
         
 
