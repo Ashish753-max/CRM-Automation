@@ -10,7 +10,7 @@ test("valid login", async function ({ page }) {
     } catch (error) {
       throw new Error(`Failed to navigate to website: ${error.message}`);
     }
-    await page.getByText('Log in').click();
+    await page.getByText('Sign in').click();
     await page.waitForTimeout(1000);
 
     // Login with validation
