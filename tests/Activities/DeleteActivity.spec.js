@@ -55,6 +55,16 @@ test("valid login", async ({ page }) => {
   }
 
   // click on the action dot 
+  await page.locator('button:has(svg.lucide-ellipsis)').first().click();
+
+  // click on the delete button
+          await page.getByText('Delete').click();
+
+          // Take final screenshot
+    await page.screenshot({ path: 'screenshots/DeleteActivity-end.png' });
+
+  
+
   
   
 

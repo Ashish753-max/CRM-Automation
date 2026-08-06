@@ -9,7 +9,7 @@ test("valid login", async ({ page }) => {
     } catch (error) {
       throw new Error(`Failed to navigate to website: ${error.message}`);
     }
-    await page.getByText('Log in').click();
+    await page.getByText('Sign in').click();
     await page.waitForTimeout(1000);
 
     // Login with validation
@@ -18,7 +18,7 @@ test("valid login", async ({ page }) => {
       if (!await emailField.isVisible({ timeout: 5000 })) {
         throw new Error("Email field not visible on login page");
       }
-      await emailField.fill("ashishappnox14@gmail.com");
+      await emailField.fill("ashishappnox1@gmail.com");
       await page.waitForTimeout(500);
 
       const passwordField = page.getByPlaceholder("Password");
@@ -46,8 +46,6 @@ test("valid login", async ({ page }) => {
       await page.waitForTimeout(3000);
     }
 
-    await page.waitForTimeout(1000);
-
     // Navigate to Activity section 
     const activity = page.locator('a[href="/activities"]').first();
     await activity.click();
@@ -55,16 +53,51 @@ test("valid login", async ({ page }) => {
   } catch (error) {
     console.error(error.message);
   }
+
+  //click on the add activity button
+  const addActivityButton = page.locator('button:has-text("activity")');
+  await addActivityButton.click();
+await page.waitForTimeout(1000);
+  // click on the meeting button
+   await page.locator('button[title="Meeting"]').click();
+  // add the title of the activity
+  const titleField = page.getByPlaceholder("Activity title");
+  await titleField.fill("Meeting with kunal");
+
+   /* // click on the starting time dropdown
+  const timeDropdowns = page.locator('//button[@role="combobox" and .//span[normalize-space()="HH:MM"]]');
+  const startingTimeDropdown = timeDropdowns.nth(0);
+  await startingTimeDropdown.scrollIntoViewIfNeeded();
+  await startingTimeDropdown.click({ force: true });
+  await page.waitForTimeout(500);
+  await page.getByRole('option', { name: '12:00 AM' }).click();
+  await page.waitForTimeout(500);
+
+  // click on the ending time dropdown
+  const endingTimeDropdown = page.locator('//button[@role="combobox" and .//span[normalize-space()="HH:MM"]]').last();
+  await endingTimeDropdown.scrollIntoViewIfNeeded();
+  await endingTimeDropdown.click({ force: true });
+  await page.waitForTimeout(500);
+  await page.getByRole('option', { name: '12:30 AM' }).click();
+
+  // click on the schedule button
   await page.waitForTimeout(1000);
-
-  // Click on the add activty button
+  const scheduleButton = page.getByRole('button', { name: 'Schedule', exact: true });
+  await scheduleButton.waitFor({ state: 'attached' });
+  await scheduleButton.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(500);
   try {
-    const addActivityButton = page.locator('button:has-text("Add Activity")');
-    await addActivityButton.waitFor({ state: 'visible', timeout: 10000 });
-    await addActivityButton.click();
+    await scheduleButton.click({ force: true });
   } catch (error) {
-    console.error(`Failed to click Add Activity button: ${error.message}`);
+    await scheduleButton.evaluate((button) => button.click());
   }
+  await page.waitForTimeout(1000);  */
 
-  
+  // click on the schedule button
+              await page.getByRole('button', { name: 'Schedule' }).click();
+
+              // Take final screenshot
+              await page.screenshot({ path: 'screenshots/CreateActivityCall1-end.png' });
+
+
 });

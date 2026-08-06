@@ -54,48 +54,19 @@ test("valid login", async ({ page }) => {
     console.error(error.message);
   }
 
-  //click on the add activity button
-  const addActivityButton = page.locator('button:has-text("activity")');
-  await addActivityButton.click();
+  // click on the action dot 
+  await page.locator('button:has(svg.lucide-ellipsis)').first().click();
 
-  // add the title of the activity
-  const titleField = page.getByPlaceholder("Activity title");
-  await titleField.fill("Call with Dev");
+  // click on the mark as done button
+          await page.getByText('Mark as done').click();
+         await page.waitForTimeout(1000);
 
-   /* // click on the starting time dropdown
-  const timeDropdowns = page.locator('//button[@role="combobox" and .//span[normalize-space()="HH:MM"]]');
-  const startingTimeDropdown = timeDropdowns.nth(0);
-  await startingTimeDropdown.scrollIntoViewIfNeeded();
-  await startingTimeDropdown.click({ force: true });
-  await page.waitForTimeout(500);
-  await page.getByRole('option', { name: '12:00 AM' }).click();
-  await page.waitForTimeout(500);
+          // Take final screenshot
+    await page.screenshot({ path: 'screenshots/MarkDoneActivity-end.png' });
 
-  // click on the ending time dropdown
-  const endingTimeDropdown = page.locator('//button[@role="combobox" and .//span[normalize-space()="HH:MM"]]').last();
-  await endingTimeDropdown.scrollIntoViewIfNeeded();
-  await endingTimeDropdown.click({ force: true });
-  await page.waitForTimeout(500);
-  await page.getByRole('option', { name: '12:30 AM' }).click();
+  
 
-  // click on the schedule button
-  await page.waitForTimeout(1000);
-  const scheduleButton = page.getByRole('button', { name: 'Schedule', exact: true });
-  await scheduleButton.waitFor({ state: 'attached' });
-  await scheduleButton.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(500);
-  try {
-    await scheduleButton.click({ force: true });
-  } catch (error) {
-    await scheduleButton.evaluate((button) => button.click());
-  }
-  await page.waitForTimeout(1000);  */
-
-  // click on the schedule button
-              await page.getByRole('button', { name: 'Schedule' }).click();
-
-              // Take final screenshot
-              await page.screenshot({ path: 'screenshots/CreateActivityCall1-end.png' });
-
+  
+  
 
 });
