@@ -55,28 +55,31 @@ test("valid login", async ({ page }) => {
   }
 
   //click on the add activity button
-  const addActivityButton = page.locator('button:has-text("Add activity")');
+  const addActivityButton = page.locator('button:has-text("Activity")');
   await addActivityButton.click();
+
+  // click on the task option
+  await page.locator('button[title="Task"]').click();
 
   // add the title of the activity
   const titleField = page.getByPlaceholder("Activity title");
-  await titleField.fill("Website Development deal");
+  await titleField.fill("API Development Task for Vijay");
 
-  // click on the starting time dropdown
+ /* // click on the starting time dropdown
   const timeDropdowns = page.locator('//button[@role="combobox" and .//span[normalize-space()="HH:MM"]]');
   const startingTimeDropdown = timeDropdowns.nth(0);
   await startingTimeDropdown.scrollIntoViewIfNeeded();
   await startingTimeDropdown.click({ force: true });
   await page.waitForTimeout(500);
   await page.getByRole('option', { name: '12:00 AM' }).click();
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(500);   */
 
-  // click on the ending time dropdown
+  /*// click on the ending time dropdown
   const endingTimeDropdown = page.locator('//button[@role="combobox" and .//span[normalize-space()="HH:MM"]]').last();
   await endingTimeDropdown.scrollIntoViewIfNeeded();
   await endingTimeDropdown.click({ force: true });
   await page.waitForTimeout(500);
-  await page.getByRole('option', { name: '12:30 AM' }).click();
+  await page.getByRole('option', { name: '12:30 AM' }).click();  */
 
   // click on the schedule button
   await page.waitForTimeout(1000);
@@ -90,5 +93,8 @@ test("valid login", async ({ page }) => {
     await scheduleButton.evaluate((button) => button.click());
   }
   await page.waitForTimeout(1000);
+
+ await page.screenshot({ path: 'screenshots/CreateActivityTask3-end.png' });
+
 
 });

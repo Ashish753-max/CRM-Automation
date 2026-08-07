@@ -59,11 +59,11 @@ test("valid login", async ({ page }) => {
   await addActivityButton.click();
 
   // click on the task option
-  await page.locator('button[title="Deadline"]').click();
+  await page.locator('button[title="Lunch"]').click();
 
   // add the title of the activity
   const titleField = page.getByPlaceholder("Activity title");
-  await titleField.fill("Deadline for Pipeclose Testing");
+  await titleField.fill("Lunch with team");
 
  /* // click on the starting time dropdown
   const timeDropdowns = page.locator('//button[@role="combobox" and .//span[normalize-space()="HH:MM"]]');
@@ -94,7 +94,7 @@ test("valid login", async ({ page }) => {
   }
   await page.waitForTimeout(1000);
 
- await page.screenshot({ path: 'screenshots/CreateActivityDeadline4-end.png' });
+ await page.screenshot({ path: 'screenshots/CreateActivityLunch6-end.png' });
 
 
 });

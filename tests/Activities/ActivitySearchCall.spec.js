@@ -54,47 +54,13 @@ test("valid login", async ({ page }) => {
     console.error(error.message);
   }
 
-  //click on the add activity button
-  const addActivityButton = page.locator('button:has-text("Activity")');
-  await addActivityButton.click();
+// enter Call in the search bar 
+    const searchBar = page.locator('input[placeholder="Search"]');
+    await searchBar.fill("Call");
+    await page.waitForTimeout(1000);
 
-  // click on the task option
-  await page.locator('button[title="Deadline"]').click();
-
-  // add the title of the activity
-  const titleField = page.getByPlaceholder("Activity title");
-  await titleField.fill("Deadline for Pipeclose Testing");
-
- /* // click on the starting time dropdown
-  const timeDropdowns = page.locator('//button[@role="combobox" and .//span[normalize-space()="HH:MM"]]');
-  const startingTimeDropdown = timeDropdowns.nth(0);
-  await startingTimeDropdown.scrollIntoViewIfNeeded();
-  await startingTimeDropdown.click({ force: true });
-  await page.waitForTimeout(500);
-  await page.getByRole('option', { name: '12:00 AM' }).click();
-  await page.waitForTimeout(500);   */
-
-  /*// click on the ending time dropdown
-  const endingTimeDropdown = page.locator('//button[@role="combobox" and .//span[normalize-space()="HH:MM"]]').last();
-  await endingTimeDropdown.scrollIntoViewIfNeeded();
-  await endingTimeDropdown.click({ force: true });
-  await page.waitForTimeout(500);
-  await page.getByRole('option', { name: '12:30 AM' }).click();  */
-
-  // click on the schedule button
-  await page.waitForTimeout(1000);
-  const scheduleButton = page.getByRole('button', { name: 'Schedule', exact: true });
-  await scheduleButton.waitFor({ state: 'attached' });
-  await scheduleButton.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(500);
-  try {
-    await scheduleButton.click({ force: true });
-  } catch (error) {
-    await scheduleButton.evaluate((button) => button.click());
-  }
-  await page.waitForTimeout(1000);
-
- await page.screenshot({ path: 'screenshots/CreateActivityDeadline4-end.png' });
+              // Take final screenshot
+              await page.screenshot({ path: 'screenshots/ActivitySearchCall-end.png' });
 
 
 });

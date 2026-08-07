@@ -55,11 +55,11 @@ test("valid login", async ({ page }) => {
   }
 
   //click on the add activity button
-  const addActivityButton = page.locator('button:has-text("activity")');
+  const addActivityButton = page.locator('button:has-text("Activity")');
   await addActivityButton.click();
 await page.waitForTimeout(1000);
   // click on the meeting button
-   await page.locator('button[title="Meeting"]').click();
+     await page.locator('button[title="Meeting"]').click();
   // add the title of the activity
   const titleField = page.getByPlaceholder("Activity title");
   await titleField.fill("Meeting with kunal");
@@ -97,7 +97,7 @@ await page.waitForTimeout(1000);
               await page.getByRole('button', { name: 'Schedule' }).click();
 
               // Take final screenshot
-              await page.screenshot({ path: 'screenshots/CreateActivityCall1-end.png' });
+              await page.screenshot({ path: 'screenshots/CreateActivityMeeting2-end.png' });
 
 
 });
