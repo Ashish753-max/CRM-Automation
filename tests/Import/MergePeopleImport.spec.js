@@ -54,15 +54,44 @@ test("valid login", async function ({ page }) {
   throw new Error(`Failed to navigate to import: ${error.message}`);
 }
 
+await page.waitForTimeout(1000);
+
+//click on new import
+await page.getByText('New Import').click();
+
+// select the people
+await page.locator('.entity-card', { hasText: 'People (Contacts)' }).click();
+
+// click on next button
+await page.getByRole('button', { name: 'Continue' }).click();
+await page.waitForTimeout(1000);
+
+// enter the file
+await page.locator('input[type="file"]').setInputFiles(
+  'C:\\Users\\user\\Downloads\\people_pipedrive.csv'
+);
+
+// click on upload and continue button
+await page.getByText('Upload & Continue').click();
+
+// click on the Validate and continue button
+await page.getByText('Validate & Continue').click();
+await page.waitForTimeout(1000);
+
+
+// click on the start import button
+await page.getByText('Start Import').click();
+await page.waitForTimeout(1000);
+
+// click on view imported data button
+await page.getByText('View Imported Data').click();
+await page.waitForTimeout(1000);
+
+// click on merge 
 // click on Delete Import
-const deleteButton = page.locator('button.import-history__delete-btn').first();
-
-await deleteButton.click();
-      await page.waitForTimeout(1500);
+const deleteButton = page.locator('button.import-history__merge-btn').first();
 
 
-// click on confirm delete button
-await page.getByRole('button', { name: 'Delete' }).last().click();
 
   } catch (error) {
     console.error("Test error:", error.message);

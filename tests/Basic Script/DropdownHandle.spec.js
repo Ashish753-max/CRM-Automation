@@ -7,6 +7,6 @@ test("dropdown handle", async ({ page}) => {
     
   //  await page.selectOption('#dropdown', '1');  // select the first option
 
-    await page.selectOption('#dropdown', '2');  // select the secpnd option 
+    await page.selectOption('#dropdown', '2');  // select the second option 
 })
 
