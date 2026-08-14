@@ -10,8 +10,9 @@ test("valid login", async function ({ page }) {
     } catch (error) {
       throw new Error(`Failed to navigate to website: ${error.message}`);
     }
-    await page.getByText('Sign in').click();
-    await page.waitForTimeout(1000);
+        await page.getByRole('button', { name: 'Log in', exact: true }).click();
+
+     await page.waitForTimeout(1000);
 
     // Login with validation
     try {
@@ -39,9 +40,33 @@ test("valid login", async function ({ page }) {
       throw new Error(`Login failed: ${error.message}`);
     }
 
-    // Wait for 5 seconds to ensure dashboard is loaded, then take final screenshot
-    await page.waitForTimeout(5000);
-    await page.screenshot({ path: 'screenshots/CRM Login-end.png' });
+    // click on the export section
+    await page.getByRole('link', { name: 'Export' }).click();
+    await page.waitForTimeout(1000);
+
+    // click on notes button
+            await page.getByRole('button', { name: 'Leads', exact: true }).click();
+
+            // click on the archived button
+            await page.getByRole('button', { name: 'Archived', exact: true }).click();
+
+            // select all leads
+            await page.getByRole('button', { name: 'Select All', exact: true }).click();
+
+            // click on the export button
+            await page.getByRole('button', { name: 'Export', exact: true }).click();
+            await page.waitForTimeout(1000);
+
+            // click on the download button
+            await page.getByRole('button', { name: 'Download', exact: true }).click();
+            await page.waitForTimeout(1000);
+
+            // Take final screenshot
+    await page.screenshot({ path: 'screenshots/LeadsArchivedCSVExport-end.png' });
+            
+
+
+    
 
   } catch (error) {
     console.error("Test error:", error.message);
