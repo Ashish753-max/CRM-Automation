@@ -9,7 +9,8 @@ test("valid login", async ({ page }) => {
     } catch (error) {
       throw new Error(`Failed to navigate to website: ${error.message}`);
     }
-    await page.getByText('Sign in').click();
+            await page.getByRole('button', { name: 'Log in', exact: true }).click();
+
     await page.waitForTimeout(1000);
 
     // Login with validation
@@ -131,7 +132,7 @@ test("valid login", async ({ page }) => {
 
     // Click send with error handling
     try {
-      const sendButton = page.getByRole('button', { name: 'Send' });
+      const sendButton = page.getByRole('button', { name: 'Send', exact: true });
       if (!await sendButton.isVisible({ timeout: 5000 })) {
         throw new Error("Send button not visible");
       }
@@ -171,8 +172,6 @@ test("valid login", async ({ page }) => {
     throw error;
   }
 
-  // Nevigate to sent section
-  await page.getByRole('button', { name: 'Sent' }).click();
 
 
 });

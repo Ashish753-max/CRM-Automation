@@ -3,8 +3,9 @@ test("Deal Creation",async function ({page, context}) {
 
     // Launch the page
     await page.goto("https://pipeclose.com/")
+            await page.getByRole('button', { name: 'Log in', exact: true }).click();
 
-        await page.getByText('Sign in').click();
+
         await page.waitForTimeout(1000);
 
 
