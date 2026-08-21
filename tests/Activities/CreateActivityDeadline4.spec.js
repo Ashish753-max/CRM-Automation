@@ -96,5 +96,4 @@ test("valid login", async ({ page }) => {
 
  await page.screenshot({ path: 'screenshots/CreateActivityDeadline4-end.png' });
 
-
 });
