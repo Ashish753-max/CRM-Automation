@@ -10,7 +10,8 @@ test("valid login", async function ({ page }) {
     } catch (error) {
       throw new Error(`Failed to navigate to website: ${error.message}`);
     }
-    await page.getByText('Sign in').click();
+            await page.getByRole('button', { name: 'Log in', exact: true }).click();
+
     await page.waitForTimeout(1000);
 
     // Login with validation
@@ -84,12 +85,9 @@ await page.getByText('Start Import').click();
 await page.waitForTimeout(1000);
 
 // click on view imported data button
-await page.getByText('View Imported Data').click();
+await page.getByText('Merge Now').click();
 await page.waitForTimeout(1000);
 
-// click on merge 
-// click on Delete Import
-const deleteButton = page.locator('button.import-history__merge-btn').first();
 
 
 
